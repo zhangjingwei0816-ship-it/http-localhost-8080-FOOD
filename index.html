@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>점심 메뉴 룰렛 - 오늘 뭐 먹지?</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <p class="eyebrow">LUNCH ROULETTE</p>
+      <h1>오늘 점심 뭐 먹지?</h1>
+      <p class="subtitle">메뉴를 추가하고 룰렛을 돌려 오늘의 점심을 골라보세요.</p>
+    </header>
+
+    <main class="main-grid">
+      <section class="card wheel-card" aria-label="점심 메뉴 룰렛">
+        <div class="wheel-stage">
+          <div class="pointer" aria-hidden="true"></div>
+          <canvas id="rouletteCanvas" width="420" height="420"></canvas>
+        </div>
+
+        <button id="spinButton" class="btn-spin" type="button" disabled>
+          돌리기
+        </button>
+
+        <div id="resultBox" class="result-box" aria-live="polite">
+          <span class="result-label">오늘의 선택</span>
+          <strong id="resultText" class="result-text">메뉴를 추가해 주세요</strong>
+        </div>
+      </section>
+
+      <section class="card menu-card" aria-label="메뉴 목록 관리">
+        <div class="menu-card-header">
+          <h2>메뉴 목록</h2>
+          <span id="menuCount" class="count-badge">0개</span>
+        </div>
+
+        <form id="menuForm" class="menu-form" autocomplete="off">
+          <input
+            id="menuInput"
+            type="text"
+            maxlength="24"
+            placeholder="메뉴 입력 (예: 김치찌개)"
+            aria-label="새 메뉴 이름"
+          />
+          <button id="addButton" class="btn-add" type="submit">추가</button>
+        </form>
+        <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+
+        <ul id="menuList" class="menu-list"></ul>
+        <p id="emptyState" class="empty-state">
+          아직 등록된 메뉴가 없습니다.<br />위 입력창에서 메뉴를 추가해 주세요.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
+
